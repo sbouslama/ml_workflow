@@ -1,6 +1,4 @@
 import sys
-sys.path.append("C:/Users/uber/Desktop/repos/data-toolkit/src")
-
 
 from sklearn import tree, ensemble
 import xgboost as xgb
