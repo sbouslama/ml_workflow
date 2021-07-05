@@ -3,6 +3,7 @@ Description
 
 This is an end-to-end workflow to approach any machine learning problem.
 Please note that we will work in an IDE editor rather than jupyter notebooks.
+This project is still under construction, so please use it carefully.
 
 Howerver, we will use Jupyter notebooks for data exploration and visualization.
 

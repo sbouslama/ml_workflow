@@ -4,12 +4,10 @@ import pandas as pd
 def data_characterization(data):
     """
     Give statistical insight of the data in a dataframe where the index is the column name.
-    Return:
-        :param data: -containing statistical information for each column of the dataset.
+    :param data: -containing statistical information for each column of the dataset.
 
-        :return: dataframe containing statistical information for each column of the dataset
+    :return: dataframe containing statistical information for each column of the dataset
     """
-    data = data.drop(["index"],axis=1)
     df = pd.DataFrame()
     Count = []
     final_value_count = []
