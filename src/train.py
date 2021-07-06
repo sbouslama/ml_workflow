@@ -60,8 +60,8 @@ def run(df, fold, model, error):
    
     df_valid = df_temp[df_temp.kfold == fold].reset_index(drop=True)
 
+    print("Shape of the training data: {}, Shape of testing data: {}".format(df_train.shape[0], df_valid.shape[0]))
     #  drop the label column from dataframe
-   
     x_train, y_train = df_train.drop(["kfold",config.TARGET], axis=1), df_train[config.TARGET].values
     x_valid, y_valid = df_valid.drop(["kfold",config.TARGET], axis=1), df_valid[config.TARGET].values
         

@@ -1,0 +1,6 @@
+*.csv
+__pycache__
+
+# models
+*.bin
+*.pickle
