@@ -1,39 +1,14 @@
 import argparse
 import os
-from math import sqrt
 from os.path import join
 
 import joblib
 import pandas as pd
-# from model_selection.selection import Selection
-from sklearn import tree
-from sklearn.metrics import mean_squared_error, f1_score
 from sklearn.preprocessing import StandardScaler
+
 import config
 import model_dispatcher
-
-def calculate_error(error, x_train, y_train, y_valid, preds, clf, fold):
-    """
-    :input error: String with the name of the metric to be used in the evaluation
-    :input x_train: Dataframe of the training data
-    :input y_train: Dataframe of the training target
-    :input y_valid: Dataframe of the validation data
-    :input preds: Dataframe of the predictions
-    :input clf: Name of the model used from the model_dispatcher
-    :input fold: Int of the fold number
-    """
-    assert error in ["mse","rmse","f1_score"]
-    if error=="mse":
-        train_error = mean_squared_error(clf.predict(x_train), y_train)
-        val_error = mean_squared_error(y_valid, preds)
-    if error=="rmse":
-        train_error = sqrt(mean_squared_error(clf.predict(x_train), y_train))
-        val_error = sqrt(mean_squared_error(y_valid, preds))
-    if error=="f1_score":
-        train_error = f1_score(clf.predict(x_train), y_train)
-        val_error = f1_score(y_valid, preds)
-    
-    print("Fold={}, train_error={}, valid_error={}".format(fold, round(train_error,3), round(val_error,3)))
+from utilities.metrics import calculate_error
 
 
 def run(df, fold, model, error):
@@ -70,6 +45,7 @@ def run(df, fold, model, error):
      # init model, fit and predict
     if clf == 'xgb':
         import xgboost as xgb
+
         # convert to Dmatric to gain efficiency and performance
         x_train = xgb.DMatrix(data = x_train, label=y_train)
         x_valid  = xgb.DMatrix(data = X_valid, label=y_valid)

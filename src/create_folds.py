@@ -31,11 +31,11 @@ def create_folds(df, straitifiedKFOLD, **args):
 if __name__ == "__main__": 
 
     # Read training data
-    df = pd.read_pickle(join(config.DATA_PATH, "train_{}.pkl".format(config.TRAIN_VERSION)))
+    df = pd.read_csv(join(config.DATA_PATH, "fraudTrain.csv"))
 
     # create folds
     df = create_folds(df, config.STRAITIFIED_KFOLD)
        
     # save the new csv with kfold column
-    # df.to_csv(, index=False)
-    df.to_pickle(join(config.DATA_PATH, "train_{}_folds.pkl".format(config.VAL_STRATEGY)))
+    df.to_csv(join(config.DATA_PATH, "train_{}_folds.csv".format(config.TRAIN_VERSION)), index=False)
+    # df.to_pickle(join(config.DATA_PATH, "train_{}_folds.pkl".format(config.VAL_STRATEGY)))
