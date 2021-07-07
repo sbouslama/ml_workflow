@@ -1,7 +1,0 @@
-name: ml_workflow
-channels:
-  - default
-dependencies:
-  - python=3.7
-  - pip:
-    - -r file:requirements.txt
